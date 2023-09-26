@@ -9,6 +9,7 @@ export default function Home() {
           {/* Below is going to be list of links to different weeks of assignments week1-week14*/}
           <ul className="flex flex-col items-center justify-center">
             <li className="hover:text-orange-300 list-disc"><Link href="/week2">Week 2 Assignment</Link></li>
+            <li className="hover:text-orange-300 list-disc"><Link href="/week3">Week 3 Assignment</Link></li>
           </ul>
         </div>
       </div>
