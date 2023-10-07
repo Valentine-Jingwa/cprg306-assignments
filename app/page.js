@@ -14,6 +14,7 @@ export default function Home() {
               <p className="hover:text-red-300 list-disc px-10 py-2 rounded-lg hover:bg-gray-200 hover:shadow-md"><Link href="/week2">Week 2 Assignment</Link></p>
               <p className="hover:text-orange-300 list-disc px-10 py-2 rounded-lg hover:bg-gray-200 hover:shadow-md"><Link href="/week3">Week 3 Assignment</Link></p>
               <p className="hover:text-yellow-300 list-disc px-10 py-2 rounded-lg hover:bg-gray-200 hover:shadow-md"><Link href="/week4">Week 4 Assignment</Link></p>
+              <p className="hover:text-green-300 list-disc px-10 py-2 rounded-lg hover:bg-gray-200 hover:shadow-md"><Link href="/week5">Week 5 Assignment</Link></p>
             </ul>
         </div>
         <div className="z-10 max-w-5xl w-1/2 items-center justify-between font-mono text-lg">
