@@ -10,34 +10,6 @@ export default function Home() {
   const [sortedItems, setSortedItems] = useState([]);
   const [sortType, setSortType] = useState('name');
   const [groupCategories, setGroupCategories] = useState(false);
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1
-  };
-
-  let dogList = [
-    {
-      id: 1,
-      name: "Sad dog",
-      description: "This dog is sad",
-      imageUrl: "https://images.pexels.com/photos/895259/pexels-photo-895259.jpeg?auto=compress&cs=tinysrgb&w=600",
-    },
-    {
-      id: 2,
-      name: "Happy dog",
-      description: "This happy dog is fluffy.",
-      imageUrl: "https://images.pexels.com/photos/3361739/pexels-photo-3361739.jpeg?auto=compress&cs=tinysrgb&w=600",
-    },
-    {
-      id: 3,
-      name: "Toque dog",
-      description: "This dog is wearing a toque.",
-      imageUrl: "https://images.pexels.com/photos/4588052/pexels-photo-4588052.jpeg?auto=compress&cs=tinysrgb&w=600",
-    },
-  ];
 
   useEffect(() => {
     const sortArray = type => {
@@ -94,10 +66,10 @@ return (
           <h1 className="text-4xl font-bold">Featured Products</h1>
 
     </div>
-          <div className="grid grid-cols-6 gap-6 w-full list-none">
+          <div className="grid grid-cols-3 gap-12 w-full list-none">
             {groupCategories ? (
               Object.keys(groupedItems).map(category => (
-                <li key={category} className="list-none">
+                <li key={category} className="justify-between list-none">
                   <h3>{category}</h3>
                   <ul className="list-none">
                     {groupedItems[category].map((item, index) => (

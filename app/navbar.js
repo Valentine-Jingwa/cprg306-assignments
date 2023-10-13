@@ -11,6 +11,10 @@ const Navbar = ({ links }) => {
               </a>
             </li>
           ))}
+          <form className="flex justify-around hover:shadow-md">
+            <input className="rounded-l h-10"></input>
+            <button className="w-10 rounded-r bg-blue-600 hover:shadow-md text-center text-white">🔍</button>
+          </form>
         </ul>
       </nav>
     );
