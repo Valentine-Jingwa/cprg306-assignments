@@ -1,27 +1,39 @@
-import Link from 'next/link'
-import Image from 'next/image'
+"use client"
+import { useState } from "react"
+import Link from "next/link"
+import WeekMap from "./weekmap"
 
+const buttons = [
+    { label: "In Class Work", link: "/" },
+    { label: "Github", link: "https://github.com/Valentine-Jingwa/cprg306-assignments" },
+    { label: "LinkIn", link: "https://www.linkedin.com/in/valentine-achalefi-jingwa-12607b252/?originalSubdomain=ca" }
+  ];
 
 export default function Home() {
-
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <div className="flex flex-col items-center justify-center">
-            <h1 className="text-4xl font-bold text-center text-blue-500">CPRG 306 Assignments</h1>
-            {/* Below is going to be list of links to different weeks of assignments week1-week14*/}
-            <ul className="flex flex-col items-center justify-center">
-              <p className="hover:text-red-300 list-disc px-10 py-2 rounded-lg hover:bg-gray-200 hover:shadow-md"><Link href="/week2">Week 2 Assignment</Link></p>
-              <p className="hover:text-orange-300 list-disc px-10 py-2 rounded-lg hover:bg-gray-200 hover:shadow-md"><Link href="/week3">Week 3 Assignment</Link></p>
-              <p className="hover:text-yellow-300 list-disc px-10 py-2 rounded-lg hover:bg-gray-200 hover:shadow-md"><Link href="/week4">Week 4 Assignment</Link></p>
-              <p className="hover:text-green-300 list-disc px-10 py-2 rounded-lg hover:bg-gray-200 hover:shadow-md"><Link href="/week5">Week 5 Assignment</Link></p>
-              <p className="hover:text-blue-300 list-disc px-10 py-2 rounded-lg hover:bg-gray-200 hover:shadow-md"><Link href="/week6">Week 6 Assignment</Link></p>
-            </ul>
+    <main>
+        <div className="flex min-h-screen p-4 lg:flex">
+            <div className="bg-yellow-100 w-1/2">
+                <h1 className="text-4xl font-bold text-center text-blue-500">CPRG 306 Assignment</h1>
+                    <WeekMap />
+            </div>
+            <div className="w-1/2 flex flex-col bg-red-200 ">
+                <div className="bg-blue-200 h-1/2 w-full">
+                    <h2 className="text-4xl font-bold text-center text-blue-500">Status</h2>
+                </div>
+                <div className="w-full font-bold text-4xl text-center">
+                    <h2 className="text-4xl font-bold text-blue-500">Links</h2>
+                    {buttons.map((button, index) => (
+                        <button
+                        key={index}
+                        className="bg-gradient-to-r m-10 h-24 w-4/6 rounded-lg from-purple-500 via-blue-500 to-blue-700 text-center hover:from-purple-500  transition rounded-lg duration-300 ease-in-out transform hover:scale-110 py-1"
+                        >
+                        <Link href={button.link}>{button.label}</Link>
+                        </button>
+                    ))}
+                </div>
+            </div>
         </div>
-        <div className="z-10 max-w-5xl w-1/2 items-center justify-between font-mono text-lg">
-          <p className="font-bold text-9xl text-blue-500">SHOP🍗</p>
-        </div>
-      </div>
     </main>
   )
 }
