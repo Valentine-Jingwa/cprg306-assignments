@@ -1,39 +1,39 @@
-export const WeekList = () => {
+export const WeekList = (children) => {
     return [
         {
-            image: 'http://placehold.it/300',
+            image: '/images/hack.jpeg',
             title: "Week 1",
             description: "Introduction to React and Next.js",
             link: "/week1"
         },
         {
-            image: 'http://placehold.it/300',
+            image: '/images/student.jpeg',
             title: "Week 2",
-            description: "Continuing with React and Next.js",
+            description: "This page contains my current student info",
             link: "/week2"
         },
         {
-            image: 'http://placehold.it/300',
+            image: '/images/rider.jpeg',
             title: "Week 3",
-            description: "Continuing with React and Next.js",
+            description: "Contains a list of groceries",
             link: "/week3"
         },
         {
-            image: 'http://placehold.it/300',
+            image: '/images/shop-list.jpeg',
             title: "Week 4",
-            description: "Continuing with React and Next.js",
+            description: "Contains a form to add groceries",
             link: "/week4"
         },
         {
-            image: 'http://placehold.it/300',
+            image: '/images/celestial.jpeg',
             title: "Week 5",
-            description: "Continuing with React and Next.js",
+            description: "Sorts the list created in the third week",
             link: "/week5"
         },
         {
-            image: 'http://placehold.it/300',
+            image: '/images/student.jpeg',
             title: "Week 6",
-            description: "Continuing with React and Next.js",
+            description: "Can add and delete list items live on the page",
             link: "/week6"
         },
     ];

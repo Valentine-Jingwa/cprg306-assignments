@@ -1,4 +1,4 @@
-import StudentInfo from '../StudentInfo';
+import StudentInfo from '../week 1/StudentInfo';
 import Navbar from '../navbar'; // Make sure the path is correct and follow standard casing
 
 export default function Home() {
