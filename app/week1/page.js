@@ -1,5 +1,3 @@
-"use client"
-import { useState } from "react";
 import Link from "next/link";
 
 export default function Home(){
@@ -7,7 +5,7 @@ export default function Home(){
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-200">
       <h1 className="text-4xl font-bold mb-4">Welcome to CPRG 306 Assignments</h1>
       <p className="text-xl mb-4">
-        This is the home page for CPRG 306 assignments. Here you'll find all the
+        This is the home page for CPRG 306 assignments. Here youll find all the
         resources and links to succeed in this course.
       </p>
       <button

@@ -1,5 +1,6 @@
 import StudentInfo from '../week1/StudentInfo';
 import Navbar from '../navbar'; // Make sure the path is correct and follow standard casing
+import Link from "next/link";
 
 export default function Home() {
   const links = [

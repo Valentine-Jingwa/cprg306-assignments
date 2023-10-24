@@ -5,7 +5,7 @@ import Item from './res/item';
 import items from './res/item-list';
 import Modal from '../week6/modal';
 
-export default function week5() {
+export default function Week5() {
   const [sortedItems, setSortedItems] = useState([]);
   const [sortType, setSortType] = useState('name');
   const [groupCategories, setGroupCategories] = useState(false);
