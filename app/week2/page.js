@@ -1,4 +1,4 @@
-import StudentInfo from '../week 1/StudentInfo';
+import StudentInfo from '../week1/StudentInfo';
 import Navbar from '../navbar'; // Make sure the path is correct and follow standard casing
 
 export default function Home() {
@@ -20,6 +20,11 @@ export default function Home() {
           <StudentInfo/>
         </div>
         {/* Return Button */}
+        <button
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      >
+        <Link href="/">GO Back</Link>
+      </button>
       </div>
     </main>
   )
