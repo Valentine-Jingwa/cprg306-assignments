@@ -1,19 +1,18 @@
 import React, { useState } from 'react';
-import items from '../../week3/item-list';
+import items from './item-list';
 
 
-const Item = ({ name, quantity, image}) => {
+const Item = ({ name, quantity, image, onDelete }) => {
   const [showModal, setShowModal] = useState(false);
-  const [currentItems, setCurrentItems] = useState(items);
+  // const [currentItems, setCurrentItems] = useState(items);
 
 
   const handleAddToCart = () => {
     setShowModal(true);
     setTimeout(() => setShowModal(false), 2000); // Hide the modal after 2 seconds
   };
-  const handleDelete = (itemName) => {
-    const newItems = currentItems.filter(item => item.name !== itemName);
-    setCurrentItems(newItems);
+  const handleDelete = () => {
+    onDelete(name);
   };
 
   return (
@@ -24,8 +23,8 @@ const Item = ({ name, quantity, image}) => {
         <div className="text-sm text-gray-600 mt-2">Buy {quantity}</div>
         <div className="flex justify-center w-full">
           <button onClick={handleAddToCart} className="bg-gradient-to-r m-2 w-32 rounded from-purple-500 via-blue-500 to-blue-700 text-center text-white py-1">+ Add to Cart</button>
-          <button onClick={() => handleDelete(name)} className="bg-gradient-to-r m-2 w-10 h-10 rounded from-purple-500 via-blue-500 to-blue-700 text-center text-white py-1">
-            <span role="img" aria-label="bin">🗑️</span>
+          <button onClick={handleDelete} className="bg-gradient-to-r m-2 w-10 h-10 rounded from-purple-500 via-blue-500 to-blue-700 text-center text-white py-1">
+          <span role="img" aria-label="bin">🗑️</span>
           </button>
         </div>
       </li>

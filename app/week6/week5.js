@@ -2,34 +2,37 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Item from './res/item';
-import items from './res/item-list';
 import Modal from '../week6/modal';
+import defaultItemList from './res/item-list';
+import dynamic from 'next/dynamic';
+
 
 export default function Week5() {
+  const [itemsList, setItemsList] = useState([]);  // New state for items list
   const [sortedItems, setSortedItems] = useState([]);
   const [sortType, setSortType] = useState('name');
   const [groupCategories, setGroupCategories] = useState(false);
+  const [groupedItems, setGroupedItems] = useState({});
+  const [defaultItems, setDefaultItems] = useState(defaultItemList);//Newly added
 
-  const [isModalOpen, setModalOpen] = useState(false);
+  const NoSSRComponent = dynamic(() => import('./res/item'), {
+    ssr: false,
+  });
 
   const handleAddItem = (newItem) => {
-    const newItemWithId = {
-      id: items.length ? Math.max(...items.map(i => i.id)) + 1 : 1,
-      ...newItem
-    };
-    setItems(prevItems => [...prevItems, newItemWithId]);
-    setModalOpen(false);
+    setItemsList(prevItems => [...prevItems, newItem]);
+  };
+
+  const handleDeleteItem = (itemName, isDefault = false) => {
+    let targetStateSetter = isDefault ? setDefaultItems : setItemsList;
+    let targetState = isDefault ? defaultItems : itemsList;
+    const newItems = targetState.filter(item => item.name !== itemName);
+    targetStateSetter(newItems);
   };
 
   useEffect(() => {
     const sortArray = type => {
-      const types = {
-        name: 'name',
-        category: 'category',
-      };
-      const sortProperty = types[type];
-      const sorted = [...items].sort((a, b) => a[sortProperty].localeCompare(b[sortProperty]));
-  
+      const sorted = [...itemsList].sort((a, b) => a[sortType].localeCompare(b[sortType]));
       if (groupCategories) {
         const grouped = sorted.reduce((acc, curr) => {
           acc[curr.category] = [...(acc[curr.category] || []), curr];
@@ -40,12 +43,9 @@ export default function Week5() {
         setSortedItems(sorted);
       }
     };
-  
     sortArray(sortType);
-  }, [sortType, groupCategories]);
+  }, [sortType, groupCategories, itemsList]);
   
-
-const [groupedItems, setGroupedItems] = useState({});
 
 return (
   <main className="bg-gray-100 flex flex-col items-center justify-between w-full ">
@@ -57,7 +57,7 @@ return (
                 <option value="name">Name</option>
                 <option value="category">Category</option>
             </select>
-            <Modal />
+            <Modal onAddItem={handleAddItem} />
             <label>
                 <input type="checkbox" onChange={() => setGroupCategories(!groupCategories)} />
                 Group by Categories
@@ -65,8 +65,7 @@ return (
             <div className="container mx-auto">
 
 
-            <h1 className="text-4xl font-bold">Featured Products</h1>
-
+            
         </div>
           <div className="grid grid-cols-3 gap-12 w-full list-none">
             {groupCategories ? (
@@ -82,15 +81,23 @@ return (
                   </ul>
                 </li>
               ))
-            ) : (
-              sortedItems.map((item, index) => (
-                <li className="col-span-1 list-none" key={index}>
-                  <Item name={item.name} quantity={item.quantity} image={item.image}/>
-                </li>
-              ))
-            )}
-          </div>
+              ) : (
+                sortedItems.map((item, index) => (
+                  <li className="col-span-1 list-none" key={index}>
+                    <Item name={item.name} quantity={item.quantity} image={item.image} onDelete={handleDeleteItem} />
+                  </li>
+                ))
+              )}
+            </div>
 
+            <h1 className="text-4xl font-bold">Featured Products</h1>
+          <div className="grid grid-cols-3 gap-12 w-full list-none">            {typeof window !== 'undefined' && defaultItems.map((item, index) => (
+              <li className="col-span-1 list-none" key={item.name}>  {/* Use unique key */}
+                <NoSSRComponent name={item.name} quantity={item.quantity} image={item.image} onDelete={() => handleDeleteItem(item.name, true)} />
+              </li>
+            ))}
+
+          </div>
           <Link className="px-6 py-2 mt-4 bg-blue-500 text-white rounded-lg hover:bg-blue-600" href="/">Back to Home</Link>
         </div>
       </div>

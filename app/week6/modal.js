@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from 'react';
 
-const Modal = ({onAddItem}) => {
+const Modal = ({ onAddItem}) => {
 
     const [name, setName] = useState('');
     const [quantity, setQuantity] = useState(1);
@@ -116,7 +116,7 @@ const Modal = ({onAddItem}) => {
                     </div>
 
                     <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                        Add +
+                    Add +
                     </button>
                 </form>
             </div>
