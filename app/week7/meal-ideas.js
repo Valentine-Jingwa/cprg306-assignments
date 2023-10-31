@@ -56,18 +56,25 @@ const MealIdeas = ({ ingredient }) => {
                 )}
             </ul>
 
-            <div className=" mt-6">
-              <h1 className="text-2xl mb-4">Meal Details</h1>
-              {mealDetails && (
-                <div>
-                  <h2 className="text-xl mb-2">{mealDetails.strMeal}</h2>
-                    <div className="flex flex-column ml-4">
-                        <img className="w-1/6 object-cover rounded-lg m-4" src={mealDetails.strMealThumb} alt={mealDetails.strMeal} />
-                        <p className="text-sm">{mealDetails.strInstructions}</p>
+            <div className="mt-6">
+                <h1 className="text-2xl mb-4">Meal Details</h1>
+                {mealDetails && (
+                    <div>
+                        <h2 className="text-xl mb-2">{mealDetails.strMeal}</h2>
+                        <div className="flex">
+                            <img className="w-1/3 object-cover rounded-lg m-4 border-4 border-blue-400" src={mealDetails.strMealThumb} alt={mealDetails.strMeal} />
+                            <div className="text-sm ml-4">
+                                <ol className="list-decimal list-inside font-sans bg-blue-100 p-4 rounded h-[400px] overflow-y-auto scrollbar-hide">
+                                    {mealDetails.strInstructions.split('. ').map((instruction, index) => (
+                                        instruction && <li className="p-2" key={index}>{instruction}.</li>
+                                    ))}
+                                </ol>
+                            </div>
+                        </div>
                     </div>
-                </div>
-              )}
+                )}
             </div>
+
             <button className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={closeModal}>Close</button>
           </div>
         </div>
