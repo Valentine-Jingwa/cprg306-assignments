@@ -36,5 +36,11 @@ export const WeekList = (children) => {
             description: "Can add and delete list items live on the page",
             link: "/week6"
         },
+        {
+            image: '/images/student.jpeg',
+            title: "Week 7",
+            description: "View meal ideas based on an ingredient from Api",
+            link: "/week7"
+        }
     ];
 };

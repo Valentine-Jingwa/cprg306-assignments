@@ -3,6 +3,8 @@ import { useState } from "react"
 import Link from "next/link"
 import WeekMap from "./weekmap"
 
+//UPDATE FEATURED WEEKS IN WEEKMAP
+
 const buttons = [
     { label: "In Class Work", link: "/inclass" },
     { label: "Github", link: "https://github.com/Valentine-Jingwa/cprg306-assignments" },
@@ -11,14 +13,14 @@ const buttons = [
 
 export default function Home() {
   return (
-    <main>
+    <main className="bg-gray-200">
         <div className="flex min-h-screen p-4 lg:flex">
-            <div className="bg-blue-200 rounded-lg w-1/2">
+            <div className="rounded-lg w-1/2">
                 <h1 className="text-2xl font-bold text-center text-blue-500">CPRG 306 Assignment</h1>
                     <WeekMap />
             </div>
-            <div className="w-1/2 flex flex-col bg-blue-200 ">
-                <div className="bg-blue-200 h-1/3 w-full">
+            <div className="w-1/2 flex flex-col ">
+                <div className=" h-1/3 w-full">
                     <h2 className="text-2xl font-bold text-center text-blue-500">Status</h2>
                 </div>
                 <div className="w-full font-bold text-xl text-center">

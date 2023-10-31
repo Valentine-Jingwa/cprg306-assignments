@@ -1,6 +1,7 @@
 // components/Navbar.js
 
 const Navbar = ({ links }) => {
+  
     return (
       <nav className="fixed top-0 left-0 w-full bg-blue-400 text-center py-4 z-50">
         <ul className="flex justify-around">
