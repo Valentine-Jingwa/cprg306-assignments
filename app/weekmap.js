@@ -4,7 +4,7 @@ import Link from 'next/link';
 const WeekMap = () => {
     const links = WeekList();
     const weekList = WeekList();
-    const featuredweek = weekList.filter(week => week.title === "Week 7")[0];
+    const featuredweek = weekList.filter(week => week.title === "Week 8")[0];
 
     return (
         <>

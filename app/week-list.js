@@ -41,6 +41,12 @@ export const WeekList = (children) => {
             title: "Week 7",
             description: "View meal ideas based on an ingredient from Api",
             link: "/week7"
+        },
+        {
+            image: '/images/student.jpeg',
+            title: "Week 8",
+            description: "Login To the Shoping Website",
+            link: "/week8"
         }
     ];
 };
