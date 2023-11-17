@@ -4,7 +4,7 @@ import Link from 'next/link';
 const WeekMap = () => {
     const links = WeekList();
     const weekList = WeekList();
-    const featuredweek = weekList.filter(week => week.title === "Week 8")[0];
+    const featuredweek = weekList.filter(week => week.title === "Week 10")[0];
 
     return (
         <>
@@ -12,7 +12,7 @@ const WeekMap = () => {
             <h1 className="text-2xl font-bold">Featured week</h1>
             <div 
                 className="relative group mt-12 h-40 w-5/6 mx-auto bg-cover bg-center rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300 ease-in-out transform hover:scale-110"
-                style={{ backgroundImage: `url(../images/student.jpeg)` }}
+                style={{ backgroundImage: `url(/student.jpeg)` }}
             >
                 <div className="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-80 flex flex-col items-center justify-center rounded-lg">
                     <p className="text-white text-2xl font-semibold">{featuredweek.title}</p>

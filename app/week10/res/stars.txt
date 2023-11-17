@@ -1,0 +1,48 @@
+          
+          //Leaving a review
+const [rating, setRating] = useState(0);
+const [hoverRating, setHoverRating] = useState(0);
+const [showSubmit, setShowSubmit] = useState(false);
+const [showAlert, setShowAlert] = useState(false);
+
+const handleMouseOver = (newRating) => {
+    setHoverRating(newRating);
+  };
+  
+  const handleMouseLeave = () => {
+    setHoverRating(0);
+  };
+  
+  const handleClick = (newRating) => {
+    setRating(newRating);
+    setShowSubmit(true);
+  };
+  
+  const handleSubmit = () => {
+    setShowAlert(true);
+    setTimeout(() => setShowAlert(false), 2000); // Hide alert after 2 seconds
+  };
+             <div className="flex flex-row">
+                                        {[1, 2, 3, 4, 5].map((star) => (
+                                            <span
+                                            key={star}
+                                            className={`fa fa-star ${star <= (hoverRating || rating) ? 'text-yellow-500' : 'text-gray-300'} cursor-pointer text-4xl`}
+                                            onMouseOver={() => handleMouseOver(star)}
+                                            onMouseLeave={handleMouseLeave}
+                                            onClick={() => handleClick(star)}
+                                            >
+                                            </span>
+                                        ))}
+                                        </div>
+                                        {showSubmit && (
+                                        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold rounded" onClick={handleSubmit}>
+                                            Submit
+                                        </button>
+                                        )}
+                                        {showAlert && (
+                                        <div className="fixed inset-0 flex items-center justify-center z-50">
+                                            <div className="bg-white p-4 rounded shadow-lg">
+                                            <p>Thank you for your review!</p>
+                                            </div>
+                                        </div>
+                                        )}
