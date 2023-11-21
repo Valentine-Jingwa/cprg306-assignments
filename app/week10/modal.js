@@ -7,7 +7,7 @@ const Modal = ({ onAddItem}) => {
     const [quantity, setQuantity] = useState(1);
     const [category, setCategory] = useState('');
     const [isModalVisible, setModalVisible] = useState(false);
-    const [icon, setIcon] = useState("");
+    const [image, setImage] = useState("");
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -16,7 +16,7 @@ const Modal = ({ onAddItem}) => {
           name,
           quantity,
           category,
-          icon
+          image,
         };
 
         // Replaced alert with onAddItem
@@ -29,7 +29,7 @@ const Modal = ({ onAddItem}) => {
         setName("");
         setQuantity(1);
         setCategory("produce");
-        setIcon("");
+        setImage("");
     };
 
     return(
@@ -73,11 +73,11 @@ const Modal = ({ onAddItem}) => {
                         </div>
 
                         <div className="w-1/3">
-                            <label className="text-gray-700 text-lg" htmlFor="icon">Icon</label>
+                            <label className="text-gray-700 text-lg" htmlFor="image">image</label>
                             <select
-                                id="icon"
+                                id="image"
                                 value={category}
-                                onChange={(e) => setIcon(e.target.value)}
+                                onChange={(e) => setImage(e.target.value)}
                                 className="border p-2 w-full rounded-lg"
                             >
                                 <option value="😋">😋</option>

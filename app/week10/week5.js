@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Item from './res/item';
-import Modal from '../week7/modal';
+import Modal from '../week10/modal';
 import dynamic from 'next/dynamic';
 
 
@@ -13,10 +13,6 @@ export default function Week5() {
   const [groupCategories, setGroupCategories] = useState(false);
   const [groupedItems, setGroupedItems] = useState({});
 
-
-  const NoSSRComponent = dynamic(() => import('./res/item'), {
-    ssr: false,
-  });
 
   const handleAddItem = (newItem) => {
     setItemsList(prevItems => [...prevItems, newItem]);
@@ -49,55 +45,49 @@ export default function Week5() {
   
 
 return (
-  <main className="bg-gray-100 flex flex-col items-center justify-between w-full ">
-    <div className="container mx-auto bg-white mt-20 mb-20 p-6 rounded-lg shadow-md ">
-        <div className="flex flex-col items-center justify-center w-full">
+  <main className="bg-gray-100 flex flex-col items-center justify-center min-h-screen py-10">
+  <div className="container mx-auto bg-white p-8 rounded-lg shadow-lg max-w-4xl">
+    <h1 className="text-4xl font-bold text-center mb-6 text-gray-800">Shopping List</h1>
 
-            <h1 className="text-5xl font-bold text-center mb-4">Shopping List</h1>
+    <div className="mb-4 flex justify-between items-center">
+      <select className="p-2 border border-gray-300 rounded-md" onChange={(e) => setSortType(e.target.value)}>
+        <option value="name">Name</option>
+        <option value="category">Category</option>
+      </select>
+      <Modal onAddItem={handleAddItem} />
+      <label className="flex items-center">
+        <input type="checkbox" className="mr-2" onChange={() => setGroupCategories(!groupCategories)} />
+        Group by Categories
+      </label>
+    </div>
 
-            <select onChange={(e) => setSortType(e.target.value)}>
-                <option value="name">Name</option>
-                <option value="category">Category</option>
-            </select>
-            <Modal onAddItem={handleAddItem} />
-            <label>
-                <input type="checkbox" onChange={() => setGroupCategories(!groupCategories)} />
-                Group by Categories
-            </label>
-            {/* Here are the Newly Generated items */}
-            <h2 className="text-3xl font-bold text-center mb">Newly added items</h2>            
-          <div className="grid grid-cols-3 gap-12 w-full list-none">
-            {groupCategories ? (
-              Object.keys(groupedItems).map(category => (
-                <li key={category} className="justify-between list-none">
-                  <h3>{category}</h3>
-                  <ul className="list-none">
-                    {groupedItems[category].map((item, index) => (
-                      <li className="col-span-1 list-none" key={index}>
-                        <Item name={item.name} quantity={item.quantity} image={item.image} />
-                      </li>
-                    ))}
-                  </ul>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {groupCategories ? (
+        Object.keys(groupedItems).map(category => (
+          <div key={category} className="bg-gray-50 p-4 rounded-lg shadow">
+            <h3 className="font-semibold text-lg mb-3">{category}</h3>
+            <ul>
+              {groupedItems[category].map((item, index) => (
+                <li key={index} className='list-none'>
+                  <Item name={item.name} quantity={item.quantity} image={item.image} onDelete={handleDeleteItem} />
                 </li>
-              ))
-              ) : (
-                sortedItems.map((item, index) => (
-                  <li className="col-span-1 list-none" key={index}>
-                    <Item name={item.name} quantity={item.quantity} image={item.image} onDelete={handleDeleteItem} />
-                  </li>
-                ))
-              )}
-            </div>
+              ))}
+            </ul>
+          </div>
+        ))
+      ) : (
+        sortedItems.map((item, index) => (
+          <li key={index} className="bg-gray-50 p-4 rounded-lg list-none shadow">
+            <Item name={item.name} quantity={item.quantity} image={item.image} onDelete={handleDeleteItem} />
+          </li>
+        ))
+      )}
+    </div>
 
-          <Link className="px-6 py-2 mt-4 bg-blue-500 text-white rounded-lg hover:bg-blue-600" href="/">Back to Home</Link>
-        </div>
-      </div>
-    </main>
+    <Link href="/"className="inline-block px-6 py-2 mt-6 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+        Back to Home
+    </Link>
+  </div>
+</main>
   );
 }
-          // <div className="grid grid-cols-3 gap-12 w-full list-none">            {typeof window !== 'undefined' && defaultItems.map((item, index) => (
-          //     <li className="col-span-1 list-none" key={item.name}>  {/* Use unique key */}
-          //       <NoSSRComponent name={item.name} quantity={item.quantity} image={item.image} onDelete={() => handleDeleteItem(item.name, true)} />
-          //     </li>
-          //   ))}
-          // </div>

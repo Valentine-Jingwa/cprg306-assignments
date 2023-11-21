@@ -27,13 +27,13 @@ const LoginPage = () => {
 
                 {user ? (
                 <>
-                  <div className="md:min-h-screen flex items-center justify-center bg-[url('/Man.jpeg')] bg-center bg-contain bg-no-repeat text-gray-900">
-                    <div className="opacity-90 hover:opacity-100 bg-white p-8 rounded-lg shadow-md w-[400px]">
-                    <h1 className="text-2xl font-semibold mb-4">Log Out</h1>
+                  <div className="min-h-screen min-w-full flex items-center justify-center bg-[url('/natural.jpeg')] bg-center bg-cover bg-no-repeat text-gray-900">
+                    <div className="opacity-95 bg-white p-8 rounded-lg shadow-md w-5/6">
                     <p>
                     Welcome, {user.displayName} ({user.email})
                     </p>
                     <Week5 />
+                    <h1 className="text-2xl font-semibold mb-4">Log Out</h1>
                     <button
                     onClick={handleFirebaseSignOut}
                     className="mt-4 bg-red-500 text-white font-semibold px-4 py-2 rounded hover:bg-red-600"
