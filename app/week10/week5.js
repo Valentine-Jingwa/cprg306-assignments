@@ -3,18 +3,16 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Item from './res/item';
 import Modal from '../week7/modal';
-import defaultItemList from './res/item-list';
 import dynamic from 'next/dynamic';
 
 
 export default function Week5() {
   const [itemsList, setItemsList] = useState([]);  // New state for items list
   const [sortedItems, setSortedItems] = useState([]);
-  const [sortedDefaultItems, setSortedDefaultItems] = useState([]);//Default item state not working
   const [sortType, setSortType] = useState('name');
   const [groupCategories, setGroupCategories] = useState(false);
   const [groupedItems, setGroupedItems] = useState({});
-  const [defaultItems, setDefaultItems] = useState(defaultItemList);
+
 
   const NoSSRComponent = dynamic(() => import('./res/item'), {
     ssr: false,
@@ -46,7 +44,7 @@ export default function Week5() {
     };
 
     sortArray(sortType);
-  }, [sortType, groupCategories, itemsList, defaultItems]);
+  }, [sortType, groupCategories, itemsList]);
   
   
 
@@ -66,17 +64,6 @@ return (
                 <input type="checkbox" onChange={() => setGroupCategories(!groupCategories)} />
                 Group by Categories
             </label>
-
-            {/* Here are the sortable default list items */}
-            <h2 className="text-3xl font-bold text-center mb">Default items</h2>
-            <div className="grid grid-cols-3 gap-12 w-full list-none">           
-              {typeof window !== 'undefined' && defaultItems.map((item, index) => (
-              <li className="col-span-1 list-none" key={item.name}>  {/* Use unique key */}
-                 <NoSSRComponent name={item.name} quantity={item.quantity} image={item.image} onDelete={() => handleDeleteItem(item.name, true)} />
-              </li>
-             ))}
-           </div>
-
             {/* Here are the Newly Generated items */}
             <h2 className="text-3xl font-bold text-center mb">Newly added items</h2>            
           <div className="grid grid-cols-3 gap-12 w-full list-none">

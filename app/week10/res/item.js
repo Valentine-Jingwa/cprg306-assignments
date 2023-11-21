@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import items from './item-list'
 import Meal from '../meal-ideas';
 
 

@@ -13,7 +13,7 @@ const buttons = [
 
 export default function Home() {
   return (
-    <main className="bg-gray-200">
+    <main className="bg-gray-200 bg-[url('/Man.jpeg')]">
         <div className="flex min-h-screen p-4 lg:flex">
             <div className="rounded-lg w-1/2">
                 <h1 className="text-2xl font-bold text-center text-blue-500">CPRG 306 Assignment</h1>

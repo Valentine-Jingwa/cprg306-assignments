@@ -31,25 +31,25 @@ export const WeekList = (children) => {
             link: "/week5"
         },
         {
-            image: '/student.jpeg',
+            image: '/Castle.jpeg',
             title: "Week 6",
             description: "Can add and delete list items live on the page",
             link: "/week6"
         },
         {
-            image: '/student.jpeg',
+            image: '/Planet.jpeg',
             title: "Week 7",
             description: "View meal ideas based on an ingredient from Api",
             link: "/week7"
         },
         {
-            image: '/student.jpeg',
+            image: '/SantaFish.jpeg',
             title: "Week 8",
             description: "Login To the Shoping Website",
             link: "/week8"
         },
         {
-            image: '/student.jpeg',
+            image: '/Me.jpeg',
             title: "Week 10",
             description: "Shoping Website and meal ideas based on an ingredient from Api",
             link: "/week10"
